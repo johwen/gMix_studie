@@ -22,6 +22,7 @@ import evaluation.loadGenerator.scheduler.Scheduler;
 
 public interface ClientTrafficScheduleWriter<E> {
 
+	
 	// @return hasMoreEventsToSchedule
 	public boolean scheduleRecords(int numberOfRecords, Scheduler<E> scheduler);
 	
