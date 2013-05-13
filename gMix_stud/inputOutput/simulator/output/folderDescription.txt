@@ -1,0 +1,3 @@
+This folder ("./inputOutput/simulator/output") contains the output (plotscripts, 
+recorded statistics as txt, config dump, graphs as eps) of the simulator.
+
