@@ -23,6 +23,7 @@ public class ClientWrapper {
 
 	public int identifier = Util.NOT_SET;
 		
+	
 	public ClientWrapper(int identifier) {
 		this.identifier = identifier;
 	}
