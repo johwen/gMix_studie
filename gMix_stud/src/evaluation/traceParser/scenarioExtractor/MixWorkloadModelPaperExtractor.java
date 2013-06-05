@@ -19,6 +19,7 @@ package evaluation.traceParser.scenarioExtractor;
 
 public class MixWorkloadModelPaperExtractor {
 
+	
 	/**
 	 * Comment
 	 *
