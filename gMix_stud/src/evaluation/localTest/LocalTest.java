@@ -37,7 +37,7 @@ public class LocalTest extends GMixTool implements EipEventListener {
 	private Settings settings;
 	
 	
-	
+	//Joh
 	public LocalTest(CommandLineParameters params) {
 		new InfoServiceServer(params);
 		this.settings = params.generateSettingsObject();
