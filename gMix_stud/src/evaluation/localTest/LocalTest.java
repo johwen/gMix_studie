@@ -93,8 +93,6 @@ public class LocalTest extends GMixTool implements EipEventListener {
 		}
 	}
 	
-	//joh
-	
 	public void startClients() {
 		System.out.println("all mixes up");
 		System.out.println("starting clients");
