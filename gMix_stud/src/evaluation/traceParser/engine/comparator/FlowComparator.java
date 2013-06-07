@@ -19,7 +19,6 @@ package evaluation.traceParser.engine.comparator;
 
 import java.util.Comparator;
 
-
 public class FlowComparator implements Comparator<String> {
 
 	
