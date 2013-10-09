@@ -36,7 +36,7 @@ public class LocalTest extends GMixTool implements EipEventListener {
 	private InfoServiceClient infoService;
 	private Settings settings;
 	
-	
+	//johtest
 	
 	public LocalTest(CommandLineParameters params) {
 		new InfoServiceServer(params);
