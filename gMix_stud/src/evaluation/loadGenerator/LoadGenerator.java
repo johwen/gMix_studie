@@ -22,6 +22,7 @@ import evaluation.loadGenerator.asFastAsPossible.AFAP_Echo_ExitNodeRequestReceiv
 import evaluation.loadGenerator.asFastAsPossible.AFAP_LoadGenerator;
 import evaluation.loadGenerator.dynamicSchedule.DynamicScheduleLoadGenerator;
 import evaluation.loadGenerator.fixedSchedule.FixedScheduleLoadGenerator;
+import evaluation.loadGenerator.traceBasedTraffic.TBT_LoadGenerator;
 import framework.core.AnonNode;
 import framework.core.config.Paths;
 import framework.core.config.Settings;
@@ -33,8 +34,8 @@ import framework.core.launcher.ToolName;
 public class LoadGenerator extends GMixTool {
 
 	public static enum InsertLevel {APPLICATION_LEVEL, MIX_PACKET_LEVEL};
-	public static enum AL_Mode {AFAP, TRACE_FILE, CONSTANT_RATE, POISSON};
-	public static enum MPL_Mode {AFAP, CONSTANT_RATE, POISSON};
+	public static enum AL_Mode {AFAP, TBT, TRACE_FILE, CONSTANT_RATE, POISSON};
+	public static enum MPL_Mode {AFAP, TBT, CONSTANT_RATE, POISSON};
 	
 	public InsertLevel INSERT_LEVEL;
 	public AL_Mode AL_MODE;
@@ -58,13 +59,16 @@ public class LoadGenerator extends GMixTool {
 		loadParameters(settings);
 		
 		boolean sendAsFastAsPossible = (AL_MODE == AL_Mode.AFAP || MPL_MODE == MPL_Mode.AFAP);
+		boolean sendTraceBasedTraffic =  (AL_MODE == AL_Mode.TBT || MPL_MODE == MPL_Mode.TBT);
 		boolean useFixedSchedule = (!settings.getPropertyAsBoolean("GLOBAL_IS_DUPLEX") || !settings.getPropertyAsBoolean("AL-TRACE_FILE-USE_DYNAMIC_SCHEDULE"));
 		
 		if (sendAsFastAsPossible) // use performance-optimized writer for AFAP mode (InsterLevel is irrelevant for AFAP)
 			AFAP_LoadGenerator.createInstance(this);
+		else if (sendTraceBasedTraffic)
+			TBT_LoadGenerator.createInstance(this);
 		else if (useFixedSchedule) 
 			FixedScheduleLoadGenerator.createInstance(this);
-		else 
+		else
 			DynamicScheduleLoadGenerator.createInstance(this);
 	}
 	
@@ -86,6 +90,8 @@ public class LoadGenerator extends GMixTool {
 		if (INSERT_LEVEL == InsertLevel.APPLICATION_LEVEL) {
 			if (settings.getProperty("AL-MODE").equalsIgnoreCase("AFAP"))
 				this.AL_MODE = AL_Mode.AFAP;
+			else if (settings.getProperty("AL-MODE").equalsIgnoreCase("TBT"))
+				this.AL_MODE = AL_Mode.TBT;
 			else if (settings.getProperty("AL-MODE").equalsIgnoreCase("TRACE_FILE"))
 				this.AL_MODE = AL_Mode.TRACE_FILE;
 			else if (settings.getProperty("AL-MODE").equalsIgnoreCase("CONSTANT_RATE"))

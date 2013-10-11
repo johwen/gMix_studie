@@ -42,7 +42,7 @@ TOLERANCE = 2500
 # ------------------------------------------------------------------------------
 # settings for APPLICATION_LEVEL load generation:
 #
-AL-MODE = AFAP
+AL-MODE = TBT
 #	possible values:
 #		- TRACE_FILE: the load generator will replay traffic from a trace file 
 #		  (see property "TRACE_FILE_NAME" below)
