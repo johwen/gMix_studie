@@ -24,6 +24,7 @@ import java.util.Random;
 
 import evaluation.loadGenerator.LoadGenerator;
 import evaluation.loadGenerator.LoadGenerator.InsertLevel;
+import evaluation.simulator.plugins.trafficSource.TraceFileModel;
 import framework.core.AnonNode;
 import framework.core.launcher.ToolName;
 import framework.core.routing.RoutingMode;
@@ -36,7 +37,9 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 	
 	private AnonNode client;
 
-	// Einlesen der Tracefiles: class TraceFileModel, TraceReplayClient : FlowReader, FlowSource
+	// Einlesen der Tracefiles: class Simulator -> TrafficSource -> TraceFileModel -> TraceReplayClient : FlowReader -> FlowSource
+	
+//	TraceFile new TraceFileModel()
 	
 	protected TBT_RR_LoadGenerator(LoadGenerator owner) {
 		super(owner);

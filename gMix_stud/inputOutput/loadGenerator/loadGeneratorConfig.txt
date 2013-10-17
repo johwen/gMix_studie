@@ -52,6 +52,7 @@ AL-MODE = TBT
 #		  (see options below)
 #		- POISSON: the simulated clients will send mix packets poisson 
 #		  distributed (see options below)
+#		- TBT TRaceFileBasedTRaffic
 #
 # ---TRACE_FILE-options:
 AL-TRACE_FILE-NAME = mixed/trace.dat
