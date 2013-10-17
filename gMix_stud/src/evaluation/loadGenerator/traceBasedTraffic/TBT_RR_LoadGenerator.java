@@ -36,7 +36,7 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 	
 	private AnonNode client;
 
-	// Einlesen der Tracefiles: class TraceFileModel, TraceReplayClient : FlowReader, FlowSource
+	// Einlesen der Tracefiles:class TraceFileModel, TraceReplayClient : FlowReader, FlowSource
 	
 	protected TBT_RR_LoadGenerator(LoadGenerator owner) {
 		super(owner);
