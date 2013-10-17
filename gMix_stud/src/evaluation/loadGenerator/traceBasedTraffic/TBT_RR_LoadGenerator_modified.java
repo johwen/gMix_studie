@@ -86,7 +86,7 @@ public class TBT_RR_LoadGenerator_modified extends TBT_LoadGenerator {
 		public void run() {
 			try {
 				// create and connect sockets:
-				System.out.println("LOAD_GENERATOR (AFAP): creating " +sockets.length +" connections...");
+				System.out.println("LOAD_GENERATOR (TBT): creating " +sockets.length +" connections...");
 				CommunicationMode cm = client.IS_DUPLEX ? CommunicationMode.DUPLEX : CommunicationMode.SIMPLEX_SENDER;
 				for (int i=0; i<sockets.length; i++) {
 					sockets[i] = client.createStreamSocket(cm, client.ROUTING_MODE != RoutingMode.CASCADE);
