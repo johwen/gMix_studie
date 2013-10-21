@@ -1,3 +1,4 @@
+
 /*
  * gMix open source project - https://svs.informatik.uni-hamburg.de/gmix/
  * Copyright (C) 2012  Karl-Peter Fuchs
@@ -24,7 +25,6 @@ import java.util.Random;
 
 import evaluation.loadGenerator.LoadGenerator;
 import evaluation.loadGenerator.LoadGenerator.InsertLevel;
-import evaluation.simulator.plugins.trafficSource.TraceFileModel;
 import framework.core.AnonNode;
 import framework.core.launcher.ToolName;
 import framework.core.routing.RoutingMode;
@@ -140,3 +140,4 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 	}
 	
 }
+
