@@ -37,9 +37,11 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 	
 	private AnonNode client;
 
-	// Einlesen der Tracefiles: class Simulator -> TrafficSource -> TraceFileModel -> TraceReplayClient : FlowReader -> FlowSource
+	// Einlesen der Tracefiles: class Simulator -> TrafficSource -> TBT_TraceFileModel -> TraceReplayClient : FlowReader -> FlowSource
 	
-//	TraceFile new TraceFileModel()
+//	TraceFile new TBT_TraceFileModel()
+	
+	
 	
 	protected TBT_RR_LoadGenerator(LoadGenerator owner) {
 		super(owner);
@@ -48,6 +50,7 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 		owner.commandLineParameters.gMixTool = ToolName.CLIENT;
 		this.client = new AnonNode(owner.commandLineParameters);
 		int numberOfConnections;
+		System.out.println(settings.getPropertyAsInt("AL-TBT_TraceFile-NAME"));
 		if (owner.INSERT_LEVEL == InsertLevel.APPLICATION_LEVEL)
 			numberOfConnections = settings.getPropertyAsInt("AL-AFAP-NUMBER_OF_CLIENTS");
 		else if (owner.INSERT_LEVEL == InsertLevel.MIX_PACKET_LEVEL)

@@ -52,17 +52,31 @@ AL-MODE = TBT
 #		  (see options below)
 #		- POISSON: the simulated clients will send mix packets poisson 
 #		  distributed (see options below)
-#		- TBT TRaceFileBasedTRaffic
+#		- TBT: TraceFileBasedTRaffic
 #
-# ---TRACE_FILE-options:
-AL-TRACE_FILE-NAME = mixed/trace.dat
-#	trace file must be in folder "./inputOutput/loadGenerator/" or a sub-folder
+# ---TBT-options:
+AL-TBT_TraceFile-NAME = ./inputOutput/global/traces/auck8/auck8_1000min_1user_dpe.gmf
+#	trace file must be in folder "./inputOutput/global/traces/" or a sub-folder
 #
-AL-TRACE_FILE-READ_AHEAD = 1000
+AL-TBT-READ_AHEAD = 1000
 #	number of lines the trace reader will try to "read ahead" of the currently 
 #	active line
 #
-AL-TRACE_FILE-USE_DYNAMIC_SCHEDULE = FALSE
+AL-TBT-USE_DYNAMIC_SCHEDULE = TRUE
+#	with a dynamic schedule, the load generator will not send requests at the 
+#	exact points of time specified in the trace file, but always wait for the 
+#	corresponding reply (before sending the next request)
+#
+#
+#---TRACE_FILE-options:
+#AL-TRACE_FILE-NAME = mixed/trace.dat
+#	trace file must be in folder "./inputOutput/loadGenerator/" or a sub-folder
+#
+#AL-TRACE_FILE-READ_AHEAD = 1000
+#	number of lines the trace reader will try to "read ahead" of the currently 
+#	active line
+#
+#AL-TRACE_FILE-USE_DYNAMIC_SCHEDULE = FALSE
 #	with a dynamic schedule, the load generator will not send requests at the 
 #	exact points of time specified in the trace file, but always wait for the 
 #	corresponding reply (before sending the next request)
