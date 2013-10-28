@@ -37,7 +37,7 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 	
 	private AnonNode client;
 
-	// Einlesen der Tracefiles: class Simulator -> TrafficSource -> TBT_TraceFileModel -> TraceReplayClient : FlowReader -> FlowSource
+	// Einlesen der Tracefiles: class Simulator -> TrafficSource -> TBT_TraceFileModel -> TBT_TraceReplayClient : FlowReader -> FlowSource
 	
 //	TraceFile new TBT_TraceFileModel()
 	
@@ -50,17 +50,26 @@ public class TBT_RR_LoadGenerator extends TBT_LoadGenerator {
 		owner.commandLineParameters.gMixTool = ToolName.CLIENT;
 		this.client = new AnonNode(owner.commandLineParameters);
 		int numberOfConnections;
-		System.out.println(settings.getPropertyAsInt("AL-TBT_TraceFile-NAME"));
-		if (owner.INSERT_LEVEL == InsertLevel.APPLICATION_LEVEL)
-			numberOfConnections = settings.getPropertyAsInt("AL-AFAP-NUMBER_OF_CLIENTS");
-		else if (owner.INSERT_LEVEL == InsertLevel.MIX_PACKET_LEVEL)
-			numberOfConnections = settings.getPropertyAsInt("MPL-AFAP-NUMBER_OF_CLIENTS");
-		else
-			throw new RuntimeException("unknown mode: " +owner.INSERT_LEVEL); 
 		
-		int connectionsPerThread = numberOfConnections / client.NUMBER_OF_THREADS;
-		for (int i=0; i<client.NUMBER_OF_THREADS; i++)
-			new RequestThread(connectionsPerThread).start();
+		
+		
+		TBT_TraceFileModel test= new TBT_TraceFileModel(settings);
+		test.createClientsArray();
+		test.startScheduling();
+		
+//		
+//		
+//		
+//		if (owner.INSERT_LEVEL == InsertLevel.APPLICATION_LEVEL)
+//			numberOfConnections = settings.getPropertyAsInt("AL-AFAP-NUMBER_OF_CLIENTS");
+//		else if (owner.INSERT_LEVEL == InsertLevel.MIX_PACKET_LEVEL)
+//			numberOfConnections = settings.getPropertyAsInt("MPL-AFAP-NUMBER_OF_CLIENTS");
+//		else
+//			throw new RuntimeException("unknown mode: " +owner.INSERT_LEVEL); 
+//		
+//		int connectionsPerThread = numberOfConnections / client.NUMBER_OF_THREADS;
+//		for (int i=0; i<client.NUMBER_OF_THREADS; i++)
+//			new RequestThread(connectionsPerThread).start();
 	}
 
 	
